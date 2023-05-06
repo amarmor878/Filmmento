@@ -1,0 +1,28 @@
+<div class="carousel-container">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let pelicula of peliculas">
+      <div class="carousel-item">
+        <div class="img-wrapper">
+          <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + pelicula.backdrop_path"
+            alt="{{ pelicula.title }}">
+        </div>
+        <div class="carousel-item-overlay">
+          <h3 class="title">{{ pelicula.title }}</h3>
+          <div class="circle-wrapper">
+            <div class="circle">
+              <p class="vote">{{ pelicula.vote_average }}</p>
+            </div>
+            <div class="genres">
+              <div class="genre" *ngFor="let genero of pelicula.genre_ids">
+                <span>{{ getGeneroById(genero) }}</span>
+              </div>
+            </div>
+          </div>
+          <p class="overview">{{ pelicula.overview | slice:0:225 }}{{ pelicula.overview.length > 225 ? '...' : '' }}</p>
+          <button class="trailer" (click)="reproducirTrailer(pelicula)"><fa-icon
+              [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer</button>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>

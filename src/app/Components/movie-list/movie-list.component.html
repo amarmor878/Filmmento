@@ -1,0 +1,26 @@
+<app-carousel></app-carousel>
+<div class="container">
+  <div class="movie-header">
+    <h2 class="movie-title">Películas</h2>
+    <div class="movie-buttons">
+      <mat-chip-listbox aria-label="Selector categoria">
+        <mat-chip-option class="movie-button" (click)="seleccionarOpcion('popular')">Popular</mat-chip-option>
+        <mat-chip-option class="movie-button" (click)="seleccionarOpcion('top-rated')">Mejor valoradas</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
+  <div class="movie-grid">
+    <div *ngFor="let pelicula of peliculas" class="movie-item">
+      <img [src]="'https://image.tmdb.org/t/p/original/' + pelicula.poster_path" alt="{{ pelicula.title }}">
+      <div class="movie-overlay">
+        <button class="trailer"><fa-icon [icon]="faPlay"></fa-icon></button>
+        <div class="movie-details">
+          <p class="movie-rating">{{ pelicula.vote_average }}</p>
+          <p class="movie-year">{{ pelicula.release_date | date:'yyyy' }}</p>
+          <p class="movie-title">{{ pelicula.title | slice:0:21 }}{{ pelicula.title.length > 21 ? '...' : '' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="load-more" (click)="mostrarMasPeliculas()">Cargar más</a>
+</div>

@@ -1,0 +1,135 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  margin: 0 auto;
+  background-color: #784390;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 1.2rem;
+}
+
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.movie-title {
+  margin: 0;
+}
+
+.movie-buttons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.movie-button {
+  margin-left: 10px;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movie-item {
+  width: 22%;
+  margin: 10px;
+  position: relative;
+}
+
+.movie-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-item:hover .movie-overlay {
+  opacity: 0.8;
+}
+
+.movie-details {
+  text-align: left;
+  color: #fff;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.movie-rating {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.movie-year {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.trailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: none;
+  background-color: #784390;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.movie-overlay:hover .trailer {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.movie-overlay:hover {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(32, 32, 32, 0) 0%,
+    rgba(32, 32, 32, 0.7) 50%,
+    rgba(32, 32, 32, 1) 100%
+  );
+}

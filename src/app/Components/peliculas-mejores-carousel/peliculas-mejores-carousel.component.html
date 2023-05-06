@@ -1,0 +1,24 @@
+<div class="carousel-container">
+  <h2>Películas mejor valoradas</h2>
+  <div class="linea"></div>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let pelicula of peliculas">
+      <div class="carousel-item">
+        <div class="img-wrapper custom-img-container">
+          <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + pelicula.poster_path"
+            alt="{{ pelicula.title }}">
+          <div class="movie-overlay">
+            <button class="trailer">
+              <fa-icon [icon]="faPlay"></fa-icon>
+            </button>
+            <div class="movie-details">
+              <p class="movie-rating">{{ pelicula.vote_average }}</p>
+              <p class="movie-year">{{ pelicula.release_date | date:'yyyy' }}</p>
+              <p class="movie-title">{{ pelicula.title | slice:0:21 }}{{ pelicula.title.length > 21 ? '...' : '' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
