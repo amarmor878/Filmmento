@@ -10,7 +10,7 @@ Bienvenido a Filmmento, la biblioteca de películas que te ofrece una experienci
 
 Con una interfaz minimalista, Filmmento te ofrece una navegación intuitiva y fácil de usar para que puedas encontrar rápidamente la información que necesitas. Además, nuestra aplicación está diseñada para inspirar confianza en cada uno de nuestros usuarios, asegurando la privacidad y seguridad de tus datos.
 
-Así que, si eres un amante del cine y buscas una aplicación potente y llena de recursos para consultar tus películas favoritas, no dudes en descargar Filmmento. ¡Te aseguramos que no te arrepentirás! [Pruébalo aquí](https://master.dtpdv92tw2p99.amplifyapp.com/)
+Así que, si eres un amante del cine y buscas una aplicación potente y llena de recursos para consultar tus películas favoritas, no dudes en descargar Filmmento. ¡Te aseguramos que no te arrepentirás! [Pruébalo aquí](https://main.d2ugbwj2mr8aez.amplifyapp.com/)
 
 ## Organización
 |Semana 1| Descripción de la tarea | Estimación en horas |
