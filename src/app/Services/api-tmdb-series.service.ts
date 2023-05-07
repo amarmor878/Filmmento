@@ -74,6 +74,16 @@ export class ApiTmdbSeriesService {
       );
   }
 
+  getDetallesSerie(id: number): Observable<any> {
+    return this.http.get(`${this.apiURL}/tv/${id}?api_key=${this.apiKey}&language=es`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener los detalles de la serie', err);
+          return throwError(() => err);
+        })
+      );
+  }
+
   private handleError(errorMessage: string, err: any) {
     console.log(err);
     const dialogRef = this.dialog.open(ErrorDialogComponent, {

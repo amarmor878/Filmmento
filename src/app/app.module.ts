@@ -16,6 +16,8 @@ import { PeliculasMejoresCarouselComponent } from './Components/peliculas-mejore
 import { SeriesPopularesCarouselComponent } from './Components/series-populares-carousel/series-populares-carousel.component';
 import { SeriesMejoresCarouselComponent } from './Components/series-mejores-carousel/series-mejores-carousel.component';
 import { DialogTrailerComponent } from './Components/dialog-trailer/dialog-trailer.component';
+import { CarouselSeriesComponent } from './Components/carousel-series/carousel-series.component';
+import { DetalleBusquedaComponent } from './Components/detalle-busqueda/detalle-busqueda.component';
 
 //Dependencias necesarias
 import { HttpClientModule } from '@angular/common/http';
@@ -29,8 +31,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { CarouselSeriesComponent } from './Components/carousel-series/carousel-series.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -46,6 +51,7 @@ import { CarouselSeriesComponent } from './Components/carousel-series/carousel-s
     DialogTrailerComponent,
     HomeComponent,
     CarouselSeriesComponent,
+    DetalleBusquedaComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,11 @@ import { CarouselSeriesComponent } from './Components/carousel-series/carousel-s
     MatButtonToggleModule,
     MatCardModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

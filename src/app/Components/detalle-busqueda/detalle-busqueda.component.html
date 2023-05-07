@@ -1,0 +1,14 @@
+<div style="margin-top: 100px">
+  <ng-container *ngIf="esPelicula; else tvSection">
+    <p>Título: {{detalle?.title}}</p>
+    <p>Descripción: {{detalle?.overview}}</p>
+    <p>Fecha de lanzamiento: {{detalle?.release_date}}</p>
+    <p>Idioma original: {{detalle?.original_language}}</p>
+  </ng-container>
+  <ng-template #tvSection>
+    <p>Nombre: {{detalle?.name}}</p>
+    <p>Descripción: {{detalle?.overview}}</p>
+    <p>Fecha de lanzamiento: {{detalle?.first_air_date}}</p>
+    <p>Idioma original: {{detalle?.original_language}}</p>
+  </ng-template>
+</div>

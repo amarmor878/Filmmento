@@ -96,6 +96,16 @@ export class ApiTmdbPeliculasService {
       );
   }
 
+  getPeliculaDetalle(movieId: number) {
+    return this.http.get(`${this.apiURL}/movie/${movieId}?api_key=${this.apiKey}&language=es`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener el detalle de la película', err);
+          return throwError(() => err);
+        })
+      );
+  }
+
   private handleError(errorMessage: string, err: any) {
     console.log(err);
     const dialogRef = this.dialog.open(ErrorDialogComponent, {

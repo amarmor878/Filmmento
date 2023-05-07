@@ -1,22 +1,30 @@
 <mat-toolbar color="primary">
-    <div class="header-left">
-        <div class="logo-container">
-            <img class="logo" src="../../../assets/logos-filmmento_1024_Mesa de trabajo 1.png" alt="Logo">
-        </div>
-        <div class="nav-container">
-            <a mat-button routerLink="/">Home</a>
-            <a mat-button routerLink="/movies" routerLinkActive="active-link">Películas</a>
-            <a mat-button routerLink="/series">Series TV</a>
-        </div>
+  <div class="header-left">
+    <div class="logo-container">
+      <img class="logo" src="../../../assets/logos-filmmento_1024_Mesa de trabajo 1.png" alt="Logo">
     </div>
-    <div class="header-right">
-        <label class="search-container">
-            <input type="text" placeholder="Buscar películas" class="search-input">
-            <mat-icon class="search-icon">search</mat-icon>
-        </label>
-        <button mat-button class="login-button">Iniciar sesión</button>
-        <button mat-icon-button class="theme-toggle">
-            <mat-icon>dark_mode</mat-icon>
-        </button>
+    <div class="nav-container">
+      <a mat-button routerLink="/">Home</a>
+      <a mat-button routerLink="/movies" routerLinkActive="active-link">Películas</a>
+      <a mat-button routerLink="/series">Series TV</a>
     </div>
+  </div>
+  <div class="header-right">
+    <label class="search-container">
+      <form [formGroup]="searchForm" class="example-form">
+        <input type="text" placeholder="Buscar películas" [formControlName]="'searchTerm'" [matAutocomplete]="auto"
+          class="example-input">
+        <div class="search-results-container">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)"
+            [displayWith]="displayFn">
+            <div class="mat-autocomplete-panel"><mat-option *ngFor="let result of searchResults" [value]="result">{{result.title}}</mat-option></div>
+          </mat-autocomplete>
+        </div>
+      </form>
+    </label>
+    <button mat-button class="login-button">Iniciar sesión</button>
+    <button mat-icon-button class="theme-toggle">
+      <mat-icon>dark_mode</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
