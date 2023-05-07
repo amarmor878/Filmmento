@@ -33,7 +33,7 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  ### Domingo 07
  - [X] ~~Creación del apartado series con filtrado de "populares o mejor valoradas" con un Angular Material~~
  - [X] ~~Revisión de rutas.~~
- - [X] ~~Implementación de la barra de búsqueda.
+ - [X] ~~Implementación de la barra de búsqueda.~~
  
 ## PENDIENTE:
 - [ ] Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).
