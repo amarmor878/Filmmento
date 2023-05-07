@@ -13,64 +13,42 @@ Con una interfaz minimalista, Filmmento te ofrece una navegación intuitiva y f�
 Así que, si eres un amante del cine y buscas una aplicación potente y llena de recursos para consultar tus películas favoritas, no dudes en descargar Filmmento. ¡Te aseguramos que no te arrepentirás! [Pruébalo aquí](https://main.d2ugbwj2mr8aez.amplifyapp.com/)
 
 ## Organización
-|Semana 1| Descripción de la tarea | Estimación en horas |
-|--|--|--|
-| Día 1 | Configuración del entorno de desarrollo | 3 horas |
-| Día 2 | Configuración de React Router y Tailwind | 3 horas |
-| Día 3 | Configuración de la API de TMDB para mostrar información de películas | 4 horas |
-| Día 4 | Configuración de la API de TMDB para mostrar detalles de películas | 4 horas |
-| Día 5 | Configuración de la API de TMDB para buscar películas y mostrar los resultados | 5 horas |
-| Día 6 | Configuración de la autenticación de Firebase y creación de pantalla de registro e inicio de sesión | 5 horas |
-| Día 7 | Creación de pantalla de perfil de usuario y configuración para mostrar información de usuario | 4 horas |
----
-| Semana 2 | Descripción de la tarea | Estimación en horas |
-| -- | -- | -- |
-| Día 8 | Creación de pantalla de lista de películas favoritas y configuración para agregar y eliminar películas | 4 horas |
-| Día 9 | Creación de pantalla de lista de películas vistas y configuración para agregar y eliminar películas | 4 horas |
-| Día 10 | Revisión y ajuste de la planificación si es necesario | 1 hora |
-| Día 11 | Creación de pantalla de contacto y configuración de formulario de contacto | 3 horas |
-| Día 12 | Ajuste del diseño de la aplicación con Tailwind | 4 horas |
-| Día 13 | Resolución de problemas y errores de la aplicación | 3 horas |
-| Día 14 | Prueba y preparación de presentación del prototipo | 3 horas |
 
-## Semana 1 (Orientativo) - 13/03/2023 - 17/03/2023
- - [X] ~~Configurar el entorno de desarrollo (Node.js, npm, MongoDB y Firebase).~~
- - [X] ~~Crear un proyecto nuevo de React.~~
- - [X] ~~Instalar y configurar React Router y Tailwind en el proyecto.~~
- - [X] ~~Crear un layout básico de la aplicación.~~
- - [X] ~~Obtener una API Key de TMDB.~~
- - [X] ~~Configurar una llamada a la API de TMDB para obtener información de películas.~~
- - [X] ~~Mostrar la información de las películas en la aplicación.~~
- - [X] ~~Crear una pantalla de detalles de película.~~
- - [X] ~~Creación de la base de datos no relacional (MongoDB).~~
- - [X] ~~Test API con POSTMAN para enlazarlo con MongoDB.~~
- - [ ] Creación de las peticiones con MongoDB (EN PROCESO)
- - [ ] Configurar una llamada a la API de TMDB para obtener detalles de una película.
- - [ ] Mostrar los detalles de una película en la pantalla de detalles.
- - [ ] Crear una pantalla de búsqueda de películas.
- - [ ] Configurar una llamada a la API de TMDB para buscar películas.
- - [ ] Mostrar los resultados de la búsqueda en la pantalla de búsqueda.
- - [ ] Revisar el progreso y planificar la siguiente semana.
- - [ ] Configurar la autenticación de Firebase.
- - [ ] Crear una pantalla de registro e inicio de sesión.
- - [ ] Implementar la autenticación de Firebase en la pantalla de registro e inicio de sesión.
- - [ ] Crear una pantalla de perfil de usuario.
- - [ ] Mostrar la información de usuario en la pantalla de perfil.
- - [ ] Implementar la actualización de información de usuario en Firebase.
+## Semana 1 (Orientativo) - 24/04/2023 - 30/04/2023
+### Sabado 28:
+ - [X] ~~Migración del proyecto de React a Angular 15.2.6~~
+ - [X] ~~Instalación de dependencias (angular material, carousel, etc...)~~
+ - [X] ~~Creación de componentes principales (home, movie-list, series-list)~~
+ - [X] ~~Busqueda de componente carousel para realizar carouseles (owl-carousel)~~
+### Domingo 29:
+ - [X] ~~Creación de componentes carousel de películas y de series (top y más populares)~~
+ - [X] ~~División de servicios, en vez de uno global, dos específicos (para peliculas y para series)~~
+ - [X] ~~Mostrar la información de las películas en la aplicación a través de los carousel.~~
 
-## Semana 2 (Orientativo) - 20/03/2023 - 24/03/2023
- - [ ] Crear una pantalla de lista de películas favoritas.
- - [ ] Implementar la adición y eliminación de películas favoritas en Firebase.
- - [ ] Crear una pantalla de lista de películas vistas.
- - [ ] Implementar la adición y eliminación de películas vistas en Firebase.
- - [ ] Revisar el progreso y ajustar la planificación en caso necesario.
- - [ ] Crear una pantalla de contacto.
- - [ ] Implementar un formulario de contacto.
- - [ ] Agregar estilos adicionales con Tailwind.
- - [ ] Ajustar el diseño de la aplicación.
- - [ ] Resolver problemas y errores de la aplicación.
- - [ ] Probar la aplicación y asegurarse de que funcione correctamente.
- - [ ] Preparar la presentación del prototipo.
+## Semana 2 (Orientativo) - 01-05-2023 - 07/05/2023
+### Sabado 06
+ - [X] ~~Crear header para administrar las rutas (peliculas, series y home)~~
+ - [X] ~~Implementación de otro servicio: Busqueda por tipo~~
+ - [X] ~~Creación del apartado Películas con filtrado de "populares o mejor valoradas" con un Angular Material~~
+ ### Domingo 07
+ - [X] ~~Creación del apartado series con filtrado de "populares o mejor valoradas" con un Angular Material~~
+ - [X] ~~Revisión de rutas.~~
+ - [X] ~~Implementación de la barra de búsqueda.
+ 
+## PENDIENTE:
+- [ ] Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).
+- [ ] Corrección del color de las búsquedas (el texto de las películas se ve en blanco, el de las series en negro y no se ve).
+- [ ] Implementación de la función que al pulsar en una pelicula de cualquier carousel, filtrar la búsqueda y redirigirla.
+- [ ] Corregir la ventana modal para ver el trailer en la pagina home al pulsar el botón "Ver trailer" DESHABILITADO POR EL MOMENTO.
+- [ ] Consultar API y, tras realizar una petición, mostrar los datos de la película o serie (en desarrollo).
+- [ ] Plantear la base de datos para que un usuario registrado, al seleccionar una pelicula como favorita, pueda ver sus peliculas favoritas en su perfil (Con Spring).
+- [ ] ...
+
+## Posibles mejoras:
+- [ ] ¿Al buscar una pelicula o serie, mostrar tambien la información de los actores?.
+- [ ] ¿Crear un apartado para personas que participen en las series o peliculas y mostrar su información?.
+- [ ] ¿Firebase podrá almacenar peliculas favoritas y vistas? Plantear posibilidad.
+- [ ] ...
 
 ## Requisitos funcionales
 
@@ -126,12 +104,12 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 
 ## Documentación
 
-### Documentación para el Front-end:
+### Documentación para el Frontend:
 - Documentación oficial de Angular: [Angular - Getting started | Angular](https://angular.io/start)
 - Documentación oficial de CSS: [CSS Tutorial (w3schools.com)](https://www.w3schools.com/css/)
 - Documentación oficial de HTML: [HTML Tutorial (w3schools.com)](https://www.w3schools.com/html/)
 
-### Documentación para el Back-end:
+### Documentación para el Backend:
 - Documentación oficial de Spring: [Spring Framework Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/)
 - Documentación oficial de Firebase: [Documentación de Firebase (google.com)](https://firebase.google.com/docs?hl=es-419)
 - Documentación oficial de la API de TMDB: [The Movie Database API (themoviedb.org)](https://developers.themoviedb.org/3/getting-started/introduction)
