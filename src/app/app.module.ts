@@ -18,6 +18,7 @@ import { SeriesMejoresCarouselComponent } from './Components/series-mejores-caro
 import { DialogTrailerComponent } from './Components/dialog-trailer/dialog-trailer.component';
 import { CarouselSeriesComponent } from './Components/carousel-series/carousel-series.component';
 import { DetalleBusquedaComponent } from './Components/detalle-busqueda/detalle-busqueda.component';
+import { SearchDialogComponent } from './Components/search-dialog/search-dialog.component';
 
 //Dependencias necesarias
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +37,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     CarouselSeriesComponent,
     DetalleBusquedaComponent,
+    SearchDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,8 @@ import { MatInputModule } from '@angular/material/input';
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
