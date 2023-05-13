@@ -16,11 +16,19 @@ export class SearchDialogComponent {
   buscar() {
     if (this.query.trim().length >= 3) {
       this.apiTmdbBusquedaService.getBusquedaGlobal(this.query).subscribe((data: any) => {
-        this.results = data.results;
+        this.results = data.results.filter((result: any) => result.poster_path !== null);
         this.filteredResults = this.results;
       });
     } else {
       this.results = [];
+      this.filteredResults = [];
+    }
+  }
+
+  borrarResultados() {
+    if (this.query.trim().length === 0) {
+      this.results = [];
+      this.filteredResults = [];
     }
   }
 

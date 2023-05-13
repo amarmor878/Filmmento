@@ -1,19 +1,18 @@
 <div class="container">
   <div class="search-container">
-    <input type="text" [(ngModel)]="query" (keyup)="buscar()" placeholder="Buscar películas o series">
+    <input type="text" [(ngModel)]="query" (keyup)="buscar()" (blur)="borrarResultados()"
+      placeholder="Buscar películas o series">
   </div>
 
-  <div class="results-container">
-    <div class="result-row" *ngFor="let result of filteredResults">
-      <ng-container *ngIf="result.poster_path">
-        <div class="result-image">
-          <img [src]="getImageUrl(result)" alt="{{ result.name || result.title }}">
-        </div>
-        <div class="result-info">
-          <h2>{{ result.media_type === 'movie' ? result.title : result.name }}</h2>
-          <p>{{ result.overview }}</p>
-        </div>
-      </ng-container>
+  <div class="results-container result-grid">
+    <div class="result-item" *ngFor="let result of filteredResults">
+      <img class="result-image" *ngIf="result.poster_path" [src]="getImageUrl(result)"
+        alt="{{ result.name || result.title }}">
+      <div class="result-info">
+        <h2 class="title">{{ result.media_type === 'movie' ? (result.title.length > 25 ? result.title.slice(0, 25) +
+          '...' : result.title) : (result.name.length > 25 ? result.name.slice(0, 25) + '...' : result.name) }}</h2>
+        <p class="overview">{{ result.overview | slice:0:100 }}{{ result.overview.length > 225 ? '...' : '' }}</p>
+      </div>
     </div>
   </div>
 </div>
