@@ -43,7 +43,8 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Implementación de vista y componente de Búsqueda de películas.~~
 ### Domingo 14
  - [X] ~~Boton de consultar informaicón de las películas y series en carouseles y busqueda~~
- - 
+ - [X] ~~Instalación de bootstrap para mejor distribución en los detalles de las búsquedas~~
+ - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
 
  
 ## PENDIENTE:
