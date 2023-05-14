@@ -31,12 +31,6 @@ export class DetalleBusquedaComponent implements OnInit {
         }
       });
     });
-
-    this.route.params.subscribe(params => {
-      this.apiTmdbBusquedaService.getBusquedaPorTrailer(params['tipo'], params['id']).subscribe(data => {
-        this.trailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(data.results[0].key);
-      });
-    })
   }
 
   getGeneros() {
@@ -49,8 +43,14 @@ export class DetalleBusquedaComponent implements OnInit {
     return backgroundImage;
   }
 
-  getTrailer() {
-    return this.trailerUrl;
+  getTrailer(tipo: string, id: string) {
+    this.apiTmdbBusquedaService.getBusquedaPorTrailer(tipo, id).subscribe(
+      data => {
+        const trailerKey = data.results[0].key;
+        const trailerUrl = `https://www.youtube.com/embed/${trailerKey}`;
+        this.trailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(trailerUrl);
+      }
+    );
   }
 
   getPoster() {

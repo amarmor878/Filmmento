@@ -12,7 +12,7 @@
       <p>Géneros: {{ getGeneros()}}</p>
       <p>{{ detalle.overview }}</p>
       <button class="btn btn-primary">Añadir a favoritos</button>
-      <button class="btn btn-primary" (click)="getTrailer()">Mostrar trailer</button>
+      <button class="btn btn-primary" (click)="getTrailer(tipo, detalle.id)">Mostrar trailer</button>
       <p>Actores</p>
     </div>
   </div>
