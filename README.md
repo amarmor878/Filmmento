@@ -41,7 +41,9 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Replanteamiento de buscar películas o series~~
  - [X] ~~Creación de nueva ruta y servicio para busqueda de películas en página independiente~~
  - [X] ~~Implementación de vista y componente de Búsqueda de películas.~~
-### Sabado 14
+### Domingo 14
+ - [X] ~~Boton de consultar informaicón de las películas y series en carouseles y busqueda~~
+ - 
 
  
 ## PENDIENTE:
