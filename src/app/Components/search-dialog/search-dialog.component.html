@@ -5,7 +5,7 @@
   </div>
 
   <div class="results-container result-grid">
-    <div class="result-item" *ngFor="let result of filteredResults">
+    <div class="result-item" *ngFor="let result of filteredResults" (click)="verDetalles(result.media_type, result.id)">
       <img class="result-image" *ngIf="result.poster_path" [src]="getImageUrl(result)"
         alt="{{ result.name || result.title }}">
       <div class="result-info">

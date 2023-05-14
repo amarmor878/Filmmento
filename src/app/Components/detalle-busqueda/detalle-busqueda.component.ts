@@ -8,9 +8,11 @@ import { ApiTmdbBusquedaService } from 'src/app/Services/api-tmdb-busqueda.servi
   styleUrls: ['./detalle-busqueda.component.css']
 })
 export class DetalleBusquedaComponent {
-  detalle: any;
+  detalle!: any;
+  generos: any[] = [];
   tipo: string = '';
   esPelicula: boolean = false;
+  esSerie: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,13 +22,37 @@ export class DetalleBusquedaComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.tipo = params['tipo'];
-      if (this.tipo === 'movie') {
-        this.esPelicula = true;
-      }
-      this.apiTmdbBusquedaService.getBusquedaGlobalPorTipo(this.tipo, params['id'])
-        .subscribe(detalle => {
-          this.detalle = detalle;
-        });
+      this.apiTmdbBusquedaService.getBusquedaGlobalPorTipo(params['tipo'], params['id']).subscribe(data => {
+        this.detalle = data;
+        if (this.tipo === 'movie') {
+          this.esPelicula = true;
+        } else {
+          this.esSerie = true;
+        }
+      });
     });
   }
+
+  getGeneros() {
+    return this.detalle.genres.map((genero: { name: any; }) => genero.name).join(', ');
+  }
+
+  getBackdropPath(): string {
+    return this.detalle?.backdrop_path ?
+      `https://image.tmdb.org/t/p/w1280${this.detalle.backdrop_path}` :
+      '/assets/img/no-image.jpg';
+  }
+
+  getTrailer() {
+    return `https://www.youtube.com/embed/${this.detalle.videos.results[0].key}`;
+  }
+
+  getPoster() {
+    return `https://image.tmdb.org/t/p/original/${this.detalle.poster_path}`;
+
+  }
+
+  backdrop = {
+    'background-image': this.getBackdropPath()
+  };
 }

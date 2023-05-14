@@ -1,4 +1,4 @@
-.carousel-item {
+.carousel-item-owl {
   position: relative;
   overflow: hidden;
   height: 860px;
@@ -52,7 +52,7 @@
   }
 }
 
-.carousel-item-overlay {
+.carousel-item-overlay-owl {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -71,7 +71,7 @@
   box-sizing: border-box;
 }
 
-.carousel-item:hover .carousel-item-overlay {
+.carousel-item-owl:hover .carousel-item-overlay-owl {
   opacity: 1;
 }
 
@@ -152,6 +152,27 @@
 }
 
 .trailer:hover {
+  background-color: #8b5bb0;
+}
+
+.info {
+  margin-left: 1rem;
+  display: inline-block;
+  background-color: #cfa61c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.info:hover {
   background-color: #8b5bb0;
 }
 

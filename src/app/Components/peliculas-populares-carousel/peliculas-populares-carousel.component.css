@@ -6,7 +6,7 @@
   background-color: #784390;
 }
 
-.carousel-container {
+.carousel-container-owl {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
@@ -85,6 +85,6 @@
   font-weight: bold;
 }
 
-.carousel-item:hover .movie-overlay {
+.carousel-item-owl:hover .movie-overlay {
   opacity: 1;
 }

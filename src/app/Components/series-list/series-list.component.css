@@ -59,18 +59,17 @@
 }
 
 .movie-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
-  transition: opacity 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .movie-item:hover .movie-overlay {
@@ -100,10 +99,6 @@
 }
 
 .trailer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 50%;
   border: none;
   background-color: #784390;
@@ -117,6 +112,24 @@
   color: #333;
   transition: all 0.3s ease-in-out;
   opacity: 0;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.info {
+  background-color: #cfa61c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-right: 50px;
 }
 
 .movie-overlay:hover .trailer {

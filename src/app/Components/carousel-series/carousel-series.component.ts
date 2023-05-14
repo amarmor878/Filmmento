@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin } from 'rxjs';
 import { ApiTmdbSeriesService } from 'src/app/Services/api-tmdb-series.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousel-series',
@@ -15,9 +16,14 @@ export class CarouselSeriesComponent {
   series!: any[];
   generos: any[] = [];
   faPlay = faPlay;
+  faInfo = faInfo;
   currentPage = 1;
 
-  constructor(private seriesServices: ApiTmdbSeriesService, public dialog: MatDialog) { }
+  constructor(private seriesServices: ApiTmdbSeriesService, public dialog: MatDialog, private router: Router) { }
+
+  verDetalles(tipo: string, id: number) {
+    this.router.navigate(['/detalle-busqueda', tipo, id]);
+  }
 
   ngOnInit() {
     forkJoin([
@@ -49,7 +55,7 @@ export class CarouselSeriesComponent {
     touchDrag: true,
     pullDrag: true,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 1700,
     navText: ['', ''],
     responsive: {
       0: {
@@ -65,7 +71,9 @@ export class CarouselSeriesComponent {
         items: 1
       }
     },
-    nav: false
-  }
-
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 8000,
+    smartSpeed: 1000
+  };
 }

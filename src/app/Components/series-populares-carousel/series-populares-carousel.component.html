@@ -1,9 +1,9 @@
-<div class="carousel-container">
+<div class="carousel-container-owl">
   <h2>Series más populares</h2>
   <div class="linea"></div>
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let serie of series">
-      <div class="carousel-item">
+      <div class="carousel-item-owl">
         <div class="img-wrapper custom-img-container">
           <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + serie.poster_path"
             alt="{{ serie.name }}">

@@ -1,14 +1,26 @@
-<div style="margin-top: 100px">
-  <ng-container *ngIf="esPelicula; else tvSection">
-    <p>Título: {{detalle?.title}}</p>
-    <p>Descripción: {{detalle?.overview}}</p>
-    <p>Fecha de lanzamiento: {{detalle?.release_date}}</p>
-    <p>Idioma original: {{detalle?.original_language}}</p>
-  </ng-container>
-  <ng-template #tvSection>
-    <p>Nombre: {{detalle?.name}}</p>
-    <p>Descripción: {{detalle?.overview}}</p>
-    <p>Fecha de lanzamiento: {{detalle?.first_air_date}}</p>
-    <p>Idioma original: {{detalle?.original_language}}</p>
-  </ng-template>
+<div class="container">
+  <div class="backdrop" [style]="backdrop"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{ getPoster() }}" alt="{{ detalle.title }}" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <h1>{{ detalle.title }}</h1>
+      <p>Puntuación: {{ detalle.vote_average }}</p>
+      <p>Géneros: {{ getGeneros()}}</p>
+      <p>{{ detalle.overview }}</p>
+      <button class="btn btn-primary">Añadir a favoritos</button>
+      <button class="btn btn-primary">Mostrar trailer</button>
+      <p>Actores</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Trailers</h2>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="{{ getTrailer() }}"></iframe>
+      </div>
+    </div>
+  </div>
+
 </div>

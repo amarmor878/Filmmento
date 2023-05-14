@@ -1,12 +1,12 @@
-<div class="carousel-container" style="margin-top: 80px;">
+<div style="margin-top: 100px;">
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let serie of series">
-      <div class="carousel-item">
+      <div class="carousel-item-owl">
         <div class="img-wrapper">
           <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + serie.backdrop_path"
             alt="{{ serie.name }}">
         </div>
-        <div class="carousel-item-overlay">
+        <div class="carousel-item-overlay-owl">
           <h3 class="title">{{ serie.name }}</h3>
           <div class="circle-wrapper">
             <div class="circle">
@@ -19,9 +19,9 @@
             </div>
           </div>
           <p class="overview">{{ serie.overview | slice:0:225 }}{{ serie.overview.length > 225 ? '...' : '' }}</p>
-          <button class="trailer" (click)="reproducirTrailer(serie)">
-            <fa-icon [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer
-          </button>
+          <button class="trailer" (click)="reproducirTrailer(serie)"><fa-icon [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver
+            Trailer</button>
+          <button class="info" (click)="verDetalles('tv', serie.id)"><fa-icon [icon]="faInfo"></fa-icon></button>
         </div>
       </div>
     </ng-template>

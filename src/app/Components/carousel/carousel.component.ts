@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin } from 'rxjs';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousel',
@@ -15,9 +16,14 @@ export class CarouselComponent implements OnInit {
   peliculas!: any[];
   generos: any[] = [];
   faPlay = faPlay;
+  faInfo = faInfo;
   currentPage = 1;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService, public dialog: MatDialog) { }
+  constructor(private peliculasService: ApiTmdbPeliculasService, public dialog: MatDialog, private router: Router) { }
+
+  verDetalles(tipo: string, id: number) {
+    this.router.navigate(['/detalle-busqueda', tipo, id]);
+  }
 
   ngOnInit() {
     forkJoin([
@@ -49,7 +55,7 @@ export class CarouselComponent implements OnInit {
     touchDrag: true,
     pullDrag: true,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 1700,
     navText: ['', ''],
     responsive: {
       0: {
@@ -65,6 +71,9 @@ export class CarouselComponent implements OnInit {
         items: 1
       }
     },
-    nav: false
-  }
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 8000,
+    smartSpeed: 1000
+  };
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiTmdbBusquedaService } from 'src/app/Services/api-tmdb-busqueda.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-dialog',
@@ -11,7 +12,7 @@ export class SearchDialogComponent {
   results: any[] = [];
   filteredResults: any[] = [];
 
-  constructor(private apiTmdbBusquedaService: ApiTmdbBusquedaService) { }
+  constructor(private apiTmdbBusquedaService: ApiTmdbBusquedaService, private router: Router) { }
 
   buscar() {
     if (this.query.trim().length >= 3) {
@@ -40,5 +41,9 @@ export class SearchDialogComponent {
     }
   }
 
+  verDetalles(tipo: string, id: number) {
+    this.router.navigate(['/detalle-busqueda', tipo, id]);
+  }
+  
 }
 

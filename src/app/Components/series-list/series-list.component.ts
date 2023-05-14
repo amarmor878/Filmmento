@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiTmdbSeriesService } from 'src/app/Services/api-tmdb-series.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-series-list',
@@ -11,13 +12,18 @@ export class SeriesListComponent {
   series: any[] = [];
   generos: any[] = [];
   faPlay = faPlay;
+  faInfo = faInfo;
   selectedOption = 'ultima';
   page = 1;
 
-  constructor(private seriesServices: ApiTmdbSeriesService) { }
+  constructor(private seriesServices: ApiTmdbSeriesService, private router: Router) { }
 
   ngOnInit(): void {
     this.mostrarSeries();
+  }
+
+  verDetalles(tipo: string, id: number) {
+    this.router.navigate(['/detalle-busqueda', tipo, id]);
   }
 
   mostrarSeries(): void {

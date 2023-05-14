@@ -1,12 +1,12 @@
-<div class="carousel-container" style="margin-top: 80px;">
+<div style="margin-top: 80px;">
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let pelicula of peliculas">
-      <div class="carousel-item">
+      <div class="carousel-item-owl">
         <div class="img-wrapper">
           <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + pelicula.backdrop_path"
             alt="{{ pelicula.title }}">
         </div>
-        <div class="carousel-item-overlay">
+        <div class="carousel-item-overlay-owl">
           <h3 class="title">{{ pelicula.title }}</h3>
           <div class="circle-wrapper">
             <div class="circle">
@@ -21,6 +21,7 @@
           <p class="overview">{{ pelicula.overview | slice:0:225 }}{{ pelicula.overview.length > 225 ? '...' : '' }}</p>
           <button class="trailer" (click)="reproducirTrailer(pelicula)"><fa-icon
               [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer</button>
+          <button class="info" (click)="verDetalles('movie', pelicula.id)"><fa-icon [icon]="faInfo"></fa-icon></button>
         </div>
       </div>
     </ng-template>

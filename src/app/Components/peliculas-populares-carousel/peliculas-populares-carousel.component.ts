@@ -37,6 +37,8 @@ export class PeliculasPopularesCarouselComponent implements OnInit {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
+    autoplay: true, // Agregado para que el carousel siempre esté en movimiento
+    autoplayHoverPause: true, // Agregado para detener el movimiento al pasar el mouse sobre él
     navText: ['', ''],
     responsive: {
       0: {
@@ -57,6 +59,4 @@ export class PeliculasPopularesCarouselComponent implements OnInit {
     },
     nav: false
   };
-
-
 }

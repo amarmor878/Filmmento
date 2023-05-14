@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,13 +12,18 @@ export class MovieListComponent implements OnInit {
   peliculas: any[] = [];
   generos: any[] = [];
   faPlay = faPlay;
+  faInfo = faInfo;
   selectedOption = 'ultima';
   page = 1;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService) { }
+  constructor(private peliculasService: ApiTmdbPeliculasService, private router: Router) { }
 
   ngOnInit(): void {
     this.mostrarPeliculas();
+  }
+
+  verDetalles(tipo: string, id: number) {
+    this.router.navigate(['/detalle-busqueda', tipo, id]);
   }
 
   mostrarPeliculas(): void {
