@@ -1,16 +1,18 @@
 <div class="container">
-  <div class="backdrop" [style]="backdrop"></div>
-  <div class="row">
+  <div class="backdrop" [style.background-image]="getBackdropPath()"></div>
+  <div class="row first-row">
     <div class="col-md-6">
-      <img src="{{ getPoster() }}" alt="{{ detalle.title }}" class="img-fluid">
+      <img *ngIf="detalle" src="{{ getPoster() }}" alt="{{ esPelicula ? detalle.title : detalle.name }}"
+        class="img-fluid">
     </div>
-    <div class="col-md-6">
-      <h1>{{ detalle.title }}</h1>
-      <p>Puntuación: {{ detalle.vote_average }}</p>
+    <div class="col-md-6" *ngIf="detalle">
+      <h1>{{ tipo === 'movie' ? detalle.title : detalle.name }}</h1>
+      <p>Puntuación: {{ (detalle.vote_average.toFixed(2)).length > 3 ? (detalle.vote_average.toFixed(2)).slice(0, 3) :
+        detalle.vote_average.toFixed(2) }}</p>
       <p>Géneros: {{ getGeneros()}}</p>
       <p>{{ detalle.overview }}</p>
       <button class="btn btn-primary">Añadir a favoritos</button>
-      <button class="btn btn-primary">Mostrar trailer</button>
+      <button class="btn btn-primary" (click)="getTrailer()">Mostrar trailer</button>
       <p>Actores</p>
     </div>
   </div>
@@ -18,7 +20,7 @@
     <div class="col-md-12">
       <h2>Trailers</h2>
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="{{ getTrailer() }}"></iframe>
+        <iframe [src]="trailerUrl" allowfullscreen></iframe>
       </div>
     </div>
   </div>

@@ -1,23 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiTmdbBusquedaService } from 'src/app/Services/api-tmdb-busqueda.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'; // Importa SafeResourceUrl y DomSanitizer
 
 @Component({
   selector: 'app-detalle-busqueda',
   templateUrl: './detalle-busqueda.component.html',
   styleUrls: ['./detalle-busqueda.component.css']
 })
-export class DetalleBusquedaComponent {
+export class DetalleBusquedaComponent implements OnInit {
   detalle!: any;
   generos: any[] = [];
   tipo: string = '';
   esPelicula: boolean = false;
   esSerie: boolean = false;
+  backdrop!: any;
+  trailerUrl: SafeResourceUrl = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    private apiTmdbBusquedaService: ApiTmdbBusquedaService
-  ) { }
+  constructor(private route: ActivatedRoute, private apiTmdbBusquedaService: ApiTmdbBusquedaService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -31,6 +31,12 @@ export class DetalleBusquedaComponent {
         }
       });
     });
+
+    this.route.params.subscribe(params => {
+      this.apiTmdbBusquedaService.getBusquedaPorTrailer(params['tipo'], params['id']).subscribe(data => {
+        this.trailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(data.results[0].key);
+      });
+    })
   }
 
   getGeneros() {
@@ -38,21 +44,17 @@ export class DetalleBusquedaComponent {
   }
 
   getBackdropPath(): string {
-    return this.detalle?.backdrop_path ?
-      `https://image.tmdb.org/t/p/w1280${this.detalle.backdrop_path}` :
-      '/assets/img/no-image.jpg';
+    const backdropPath = this.detalle?.backdrop_path;
+    const backgroundImage = `url('https://image.tmdb.org/t/p/w1280${backdropPath}')`
+    return backgroundImage;
   }
 
   getTrailer() {
-    return `https://www.youtube.com/embed/${this.detalle.videos.results[0].key}`;
+    return this.trailerUrl;
   }
 
   getPoster() {
-    return `https://image.tmdb.org/t/p/original/${this.detalle.poster_path}`;
-
+    return this.detalle?.poster_path ? `https://image.tmdb.org/t/p/original/${this.detalle.poster_path}` : '/assets/img/no-image.jpg';
   }
 
-  backdrop = {
-    'background-image': this.getBackdropPath()
-  };
 }

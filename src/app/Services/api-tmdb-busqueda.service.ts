@@ -95,7 +95,17 @@ export class ApiTmdbBusquedaService {
       );
   }
 
+  //Busqueda por trailer
+  getBusquedaPorTrailer(tipo: string, id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/${tipo}/${id}/videos?api_key=${this.apiKey}`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener los resultados de la busqueda', err);
+          return throwError(() => err);
+        })
+      );
 
+  }
   private handleError(errorMessage: string, err: any) {
     console.log(err);
     const dialogRef = this.dialog.open(ErrorDialogComponent, {
