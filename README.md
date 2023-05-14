@@ -25,7 +25,7 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~División de servicios, en vez de uno global, dos específicos (para peliculas y para series)~~
  - [X] ~~Mostrar la información de las películas en la aplicación a través de los carousel.~~
 
-## Semana 2 (Orientativo) - 01-05-2023 - 07/05/2023
+## Semana 2 (Orientativo) - 01/05/2023 - 07/05/2023
 ### Sabado 06
  - [X] ~~Crear header para administrar las rutas (peliculas, series y home)~~
  - [X] ~~Implementación de otro servicio: Busqueda por tipo~~
@@ -34,10 +34,22 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Creación del apartado series con filtrado de "populares o mejor valoradas" con un Angular Material~~
  - [X] ~~Revisión de rutas.~~
  - [X] ~~Implementación de la barra de búsqueda.~~
+
+## Semana 3 (Orientativo) - 08/05/2023 - 14/05/2023
+### Sabado 13
+ - [X] ~~Modificación de barra de búsqueda en header (se ve debajo los resultados)~~
+ - [X] ~~Replanteamiento de buscar películas o series~~
+ - [X] ~~Creación de nueva ruta y servicio para busqueda de películas en página independiente~~
+ - [X] ~~Implementación de vista y componente de Búsqueda de películas.~~
+### Domingo 14
+ - [X] ~~Boton de consultar informaicón de las películas y series en carouseles y busqueda~~
+ - [X] ~~Instalación de bootstrap para mejor distribución en los detalles de las búsquedas~~
+ - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
+
  
 ## PENDIENTE:
-- [ ] Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).
-- [ ] Corrección del color de las búsquedas (el texto de las películas se ve en blanco, el de las series en negro y no se ve).
+- [X] ~~Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).~~
+- [X] ~~Corrección del color de las búsquedas (el texto de las películas se ve en blanco, el de las series en negro y no se ve).~~
 - [ ] Implementación de la función que al pulsar en una pelicula de cualquier carousel, filtrar la búsqueda y redirigirla.
 - [ ] Corregir la ventana modal para ver el trailer en la pagina home al pulsar el botón "Ver trailer" DESHABILITADO POR EL MOMENTO.
 - [ ] Consultar API y, tras realizar una petición, mostrar los datos de la película o serie (en desarrollo).
