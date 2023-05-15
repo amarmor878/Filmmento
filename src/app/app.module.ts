@@ -39,6 +39,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatInputModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatDividerModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ mat-toolbar {
   top: 0;
   left: 0;
   z-index: 1;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.644);
 }
 
 .header-left,

@@ -1,28 +1,31 @@
 <div class="container">
   <div class="backdrop" [style.background-image]="getBackdropPath()"></div>
   <div class="row first-row">
-    <div class="col-md-6">
-      <img *ngIf="detalle" src="{{ getPoster() }}" alt="{{ esPelicula ? detalle.title : detalle.name }}"
-        class="img-fluid">
-    </div>
     <div class="col-md-6" *ngIf="detalle">
-      <h1>{{ tipo === 'movie' ? detalle.title : detalle.name }}</h1>
-      <p>Puntuación: {{ (detalle.vote_average.toFixed(2)).length > 3 ? (detalle.vote_average.toFixed(2)).slice(0, 3) :
-        detalle.vote_average.toFixed(2) }}</p>
-      <p>Géneros: {{ getGeneros()}}</p>
-      <p>{{ detalle.overview }}</p>
-      <button class="btn btn-primary">Añadir a favoritos</button>
-      <button class="btn btn-primary" (click)="getTrailer(tipo, detalle.id)">Mostrar trailer</button>
-      <p>Actores</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Trailers</h2>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe [src]="trailerUrl" allowfullscreen></iframe>
+      <div class="d-flex align-items-center">
+        <img *ngIf="logoUrl" [src]="logoUrl" [alt]="esPelicula ? detalle.title : detalle.name" class="img-fluid">
+        <h1 *ngIf="!logoUrl">{{ tipo === 'movie' ? detalle.title : detalle.name }}</h1>
+      </div>
+      <div class="info">
+        <div class="mt-3">
+          <button class="btn btn-outline-light" (click)="openTrailerModal()">
+            <fa-icon [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer
+          </button>          
+          <button class="btn btn-outline-light rounded-circle" style="margin-left: 1rem;">
+            <fa-icon [icon]="faHeart"></fa-icon>
+          </button>
+        </div>
+        <p class="mt-3">{{ detalle.overview }}</p>
       </div>
     </div>
+  </div>
+
+  <div class="row">
+    <mat-divider></mat-divider>
+    <mat-chip-listbox aria-label="Selector categoria">
+      <mat-chip-option class="movie-button" value="similares" selected>Similares</mat-chip-option>
+      <mat-chip-option class="movie-button" value="detalles">Detalles</mat-chip-option>
+    </mat-chip-listbox>
   </div>
 
 </div>

@@ -1,5 +1,5 @@
-.container{
-    margin-top: 100px
+.container {
+  margin-top: 100px;
 }
 
 .backdrop {
@@ -16,4 +16,12 @@
 
 .first-row {
   margin-top: 150px;
+}
+
+.info {
+  margin-top: 3rem;
+}
+
+.scroll-locked {
+  overflow: hidden;
 }

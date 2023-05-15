@@ -62,39 +62,6 @@ export class ApiTmdbBusquedaService {
       );
   }
 
-  // Busqueda de personas
-  getBusquedaPersonas(query: string): Observable<any> {
-    return this.http.get(`${this.apiURL}/search/person?api_key=${this.apiKey}&language=es&query=${query}`)
-      .pipe(
-        catchError(err => {
-          this.handleError('Error al obtener los resultados de la busqueda', err);
-          return throwError(() => err);
-        })
-      );
-  }
-
-  // Busqueda de peliculas por genero
-  getBusquedaPeliculasPorGenero(genero: string): Observable<any> {
-    return this.http.get(`${this.apiURL}/discover/movie?api_key=${this.apiKey}&language=es&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}`)
-      .pipe(
-        catchError(err => {
-          this.handleError('Error al obtener los resultados de la busqueda', err);
-          return throwError(() => err);
-        })
-      );
-  }
-
-  // Busqueda de series por genero
-  getBusquedaSeriesPorGenero(genero: string): Observable<any> {
-    return this.http.get(`${this.apiURL}/discover/tv?api_key=${this.apiKey}&language=es&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_genres=${genero}`)
-      .pipe(
-        catchError(err => {
-          this.handleError('Error al obtener los resultados de la busqueda', err);
-          return throwError(() => err);
-        })
-      );
-  }
-
   //Busqueda por trailer
   getBusquedaPorTrailer(tipo: string, id: string): Observable<any> {
     return this.http.get(`${this.apiURL}/${tipo}/${id}/videos?api_key=${this.apiKey}`)
@@ -104,8 +71,41 @@ export class ApiTmdbBusquedaService {
           return throwError(() => err);
         })
       );
-
   }
+
+  //Listar imagenes
+  getImagenes(tipo: string, id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/${tipo}/${id}/images?api_key=${this.apiKey}&language=es&include_image_language=es`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener los resultados de la busqueda', err);
+          return throwError(() => err);
+        })
+      );
+  }
+
+  //Busqueda similares
+  getBusquedaSimilares(tipo: string, id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/${tipo}/${id}/similar?api_key=${this.apiKey}&language=es&page=1`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener los resultados de la busqueda', err);
+          return throwError(() => err);
+        })
+      );
+  }
+
+  //Busqueda creditos:
+  getBusquedaCreditos(tipo: string, id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/${tipo}/${id}/credits?api_key=${this.apiKey}&language=es`)
+      .pipe(
+        catchError(err => {
+          this.handleError('Error al obtener los resultados de la busqueda', err);
+          return throwError(() => err);
+        })
+      );
+  }
+
   private handleError(errorMessage: string, err: any) {
     console.log(err);
     const dialogRef = this.dialog.open(ErrorDialogComponent, {
