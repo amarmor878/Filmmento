@@ -137,5 +137,5 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 -   Documentación oficial de Git: [Git - Documentation (git-scm.com)](https://git-scm.com/doc)
 -   Documentación oficial de GitHub: [GitHub Documentation](https://docs.github.com/en)
 -   Documentación oficial de Markdown: [Getting Started | Markdown Guide](https://www.markdownguide.org/getting-started/)
-- Iconos: [DEVICON | All programming languages and development tools related icons font](https://devicon.dev/)
+-   Iconos: [DEVICON | All programming languages and development tools related icons font](https://devicon.dev/)
 
