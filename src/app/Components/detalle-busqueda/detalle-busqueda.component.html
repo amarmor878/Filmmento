@@ -40,7 +40,7 @@
           <p *ngIf="esPelicula">{{ getDuracionFormateada() }}</p>
           <p *ngIf="esSerie"><strong>Primera emisión:</strong></p>
           <p *ngIf="esSerie">{{ detalle.first_air_date | date:'dd/MM/yyyy' }}</p>
-          <p><strong>Fecha de estreno:</strong></p>
+          <p *ngIf="esPelicula"><strong>Fecha de estreno:</strong></p>
           <p *ngIf="esPelicula">{{ detalle.release_date | date:'dd/MM/yyyy' }}</p>
           <p *ngIf="esSerie"><strong>Última emisión:</strong></p>
           <p *ngIf="esSerie">{{ detalle.last_air_date | date:'dd/MM/yyyy' }}</p>
