@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
-import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
+import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { ViewportScroller } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -21,7 +21,13 @@ export class MovieListComponent implements OnInit {
   page = 1;
   modalOpen = false;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService, private router: Router, private dialog: MatDialog, private sanitizer: DomSanitizer, private viewportScroller: ViewportScroller) { }
+  constructor(
+    private peliculasService: ApiTmdbPeliculasService,
+    private router: Router,
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer,
+    private viewportScroller: ViewportScroller
+  ) { }
 
   ngOnInit(): void {
     this.mostrarPeliculas();
@@ -36,24 +42,23 @@ export class MovieListComponent implements OnInit {
     document.body.style.overflow = 'hidden';
     const currentPosition = this.viewportScroller.getScrollPosition();
     this.viewportScroller.scrollToPosition([0, 0]);
-    this.peliculasService.getPeliculasTrailer(movieId)
-      .subscribe((data: any) => {
-        const key = data.results[0].key;
-        const trailerUrl = this.getSafeYoutubeUrl(key);
-        const dialogConfig: MatDialogConfig = {
-          width: '75%',
-          height: '75%',
-          position: { top: '50%', left: '50%' },
-          panelClass: 'custom-modal',
-          data: { trailerUrl }
-        };
-        const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(() => {
-          this.modalOpen = false;
-          document.body.style.overflow = 'auto';
-          this.viewportScroller.scrollToPosition(currentPosition);
-        });
+    this.peliculasService.getPeliculasTrailer(movieId).subscribe((data: any) => {
+      const key = data.results[0].key;
+      const trailerUrl = this.getSafeYoutubeUrl(key);
+      const dialogConfig: MatDialogConfig = {
+        width: '75%',
+        height: '75%',
+        position: { top: '50%', left: '50%' },
+        panelClass: 'custom-modal',
+        data: { trailerUrl }
+      };
+      const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(() => {
+        this.modalOpen = false;
+        document.body.style.overflow = 'auto';
+        this.viewportScroller.scrollToPosition(currentPosition);
       });
+    });
   }
 
   private getSafeYoutubeUrl(key: string): SafeResourceUrl {
@@ -62,36 +67,28 @@ export class MovieListComponent implements OnInit {
   }
 
   mostrarPeliculas(): void {
-    if (this.selectedOption == 'popular') {
-      this.peliculasService.getPeliculasPopulares(this.page).subscribe((data: any) => {
-        this.peliculas = data.results;
-      });
-    } else if (this.selectedOption == 'top-rated') {
-      this.peliculasService.getPeliculasTopRated(this.page).subscribe((data: any) => {
-        this.peliculas = data.results;
-      });
-    } else {
-      this.peliculasService.getPeliculasUltimosLanzamientos(this.page).subscribe((data: any) => {
-        this.peliculas = data.results;
-      });
-    }
+    const fetchPeliculas = this.selectedOption === 'popular'
+      ? this.peliculasService.getPeliculasPopulares(this.page)
+      : this.selectedOption === 'top-rated'
+        ? this.peliculasService.getPeliculasTopRated(this.page)
+        : this.peliculasService.getPeliculasUltimosLanzamientos(this.page);
+
+    fetchPeliculas.subscribe((data: any) => {
+      this.peliculas = data.results;
+    });
   }
 
   mostrarMasPeliculas(): void {
     this.page += 1;
-    if (this.selectedOption == 'popular') {
-      this.peliculasService.getPeliculasPopulares(this.page).subscribe((data: any) => {
-        this.peliculas = [...this.peliculas, ...data.results];
-      });
-    } else if (this.selectedOption == 'top-rated') {
-      this.peliculasService.getPeliculasTopRated(this.page).subscribe((data: any) => {
-        this.peliculas = [...this.peliculas, ...data.results];
-      });
-    } else {
-      this.peliculasService.getPeliculasUltimosLanzamientos(this.page).subscribe((data: any) => {
-        this.peliculas = [...this.peliculas, ...data.results];
-      });
-    }
+    const fetchPeliculas = this.selectedOption === 'popular'
+      ? this.peliculasService.getPeliculasPopulares(this.page)
+      : this.selectedOption === 'top-rated'
+        ? this.peliculasService.getPeliculasTopRated(this.page)
+        : this.peliculasService.getPeliculasUltimosLanzamientos(this.page);
+
+    fetchPeliculas.subscribe((data: any) => {
+      this.peliculas = [...this.peliculas, ...data.results];
+    });
   }
 
   seleccionarOpcion(opcion: string): void {

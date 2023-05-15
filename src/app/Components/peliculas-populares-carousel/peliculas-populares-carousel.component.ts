@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { ViewportScroller } from '@angular/common';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { ViewportScroller } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-peliculas-populares-carousel',

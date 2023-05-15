@@ -12,7 +12,7 @@ export class DialogTrailerComponent {
     public dialogRef: MatDialogRef<DialogTrailerComponent>
   ) { }
 
-  closeModal(): void {
+  closeModal = (): void => {
     this.dialogRef.close();
-  }
+  };
 }

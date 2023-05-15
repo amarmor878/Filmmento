@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { ViewportScroller } from '@angular/common';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { ViewportScroller } from '@angular/common';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-peliculas-mejores-carousel',
@@ -19,20 +19,34 @@ export class PeliculasMejoresCarouselComponent {
   currentPage = 1;
   modalOpen = false;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService, private dialog: MatDialog, private sanitizer: DomSanitizer, private viewportScroller: ViewportScroller) { }
+  constructor(
+    private peliculasService: ApiTmdbPeliculasService,
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer,
+    private viewportScroller: ViewportScroller
+  ) { }
 
   ngOnInit(): void {
-    this.peliculasService.getPeliculasTopRated(this.currentPage).subscribe(peliculasData => {
-      this.peliculas = peliculasData.results;
-    });
+    this.getPeliculasTopRated();
+    this.getGenerosPeliculas();
+  }
 
-    this.peliculasService.getGenerosPeliculas().subscribe(generosData => {
+  getPeliculasTopRated(): void {
+    this.peliculasService
+      .getPeliculasTopRated(this.currentPage)
+      .subscribe((peliculasData) => {
+        this.peliculas = peliculasData.results;
+      });
+  }
+
+  getGenerosPeliculas(): void {
+    this.peliculasService.getGenerosPeliculas().subscribe((generosData) => {
       this.generos = generosData.genres;
     });
   }
 
-  getGeneroById(id: number) {
-    const genero = this.generos.find(g => g.id === id);
+  getGeneroById(id: number): string {
+    const genero = this.generos.find((g) => g.id === id);
     return genero ? genero.name : '';
   }
 
@@ -41,24 +55,23 @@ export class PeliculasMejoresCarouselComponent {
     document.body.style.overflow = 'hidden';
     const currentPosition = this.viewportScroller.getScrollPosition();
     this.viewportScroller.scrollToPosition([0, 0]);
-    this.peliculasService.getPeliculasTrailer(movieId)
-      .subscribe((data: any) => {
-        const key = data.results[0].key;
-        const trailerUrl = this.getSafeYoutubeUrl(key);
-        const dialogConfig: MatDialogConfig = {
-          width: '75%',
-          height: '75%',
-          position: { top: '50%', left: '50%' },
-          panelClass: 'custom-modal',
-          data: { trailerUrl }
-        };
-        const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(() => {
-          this.modalOpen = false;
-          document.body.style.overflow = 'auto';
-          this.viewportScroller.scrollToPosition(currentPosition);
-        });
+    this.peliculasService.getPeliculasTrailer(movieId).subscribe((data: any) => {
+      const key = data.results[0].key;
+      const trailerUrl = this.getSafeYoutubeUrl(key);
+      const dialogConfig: MatDialogConfig = {
+        width: '75%',
+        height: '75%',
+        position: { top: '50%', left: '50%' },
+        panelClass: 'custom-modal',
+        data: { trailerUrl },
+      };
+      const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(() => {
+        this.modalOpen = false;
+        document.body.style.overflow = 'auto';
+        this.viewportScroller.scrollToPosition(currentPosition);
       });
+    });
   }
 
   private getSafeYoutubeUrl(key: string): SafeResourceUrl {
