@@ -36,7 +36,7 @@
     <div class="col-lg-6">
       <div class="row">
         <div class="col-sm-6">
-          <p><strong>Duración:</strong></p>
+          <p *ngIf="esPelicula"><strong>Duración:</strong></p>
           <p *ngIf="esPelicula">{{ getDuracionFormateada() }}</p>
           <p *ngIf="esSerie"><strong>Primera emisión:</strong></p>
           <p *ngIf="esSerie">{{ detalle.first_air_date | date:'dd/MM/yyyy' }}</p>
