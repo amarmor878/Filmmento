@@ -84,6 +84,16 @@ export class ApiTmdbSeriesService {
       );
   }
 
+  getSerieTrailer(serieId:number){
+    return this.http.get(`${this.apiURL}/tv/${serieId}/videos?api_key=${this.apiKey}`)
+    .pipe(
+      catchError(err => {
+        this.handleError('Error al obtener el trailer de la serie', err);
+        return throwError(() => err);
+      })
+    );
+  }
+
   private handleError(errorMessage: string, err: any) {
     console.log(err);
     const dialogRef = this.dialog.open(ErrorDialogComponent, {

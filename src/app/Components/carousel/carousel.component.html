@@ -11,7 +11,7 @@
           <div class="circle-wrapper">
             <div class="circle">
               <p class="vote">{{ pelicula.vote_average }}</p>
-            </div> 
+            </div>
             <div class="genres">
               <div class="genre" *ngFor="let genero of pelicula.genre_ids">
                 <span>{{ getGeneroById(genero) }}</span>
@@ -19,7 +19,7 @@
             </div>
           </div>
           <p class="overview">{{ pelicula.overview | slice:0:225 }}{{ pelicula.overview.length > 225 ? '...' : '' }}</p>
-          <button class="trailer" (click)="reproducirTrailer(pelicula)"><fa-icon
+          <button class="trailer" (click)="openTrailerModal(pelicula.id)"><fa-icon
               [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer</button>
           <button class="info" (click)="verDetalles('movie', pelicula.id)"><fa-icon [icon]="faInfo"></fa-icon></button>
         </div>

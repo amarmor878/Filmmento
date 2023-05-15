@@ -19,8 +19,8 @@
             </div>
           </div>
           <p class="overview">{{ serie.overview | slice:0:225 }}{{ serie.overview.length > 225 ? '...' : '' }}</p>
-          <button class="trailer" (click)="reproducirTrailer(serie)"><fa-icon [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver
-            Trailer</button>
+          <button class="trailer" (click)="openTrailerModal(serie.id)"><fa-icon
+              [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer</button>
           <button class="info" (click)="verDetalles('tv', serie.id)"><fa-icon [icon]="faInfo"></fa-icon></button>
         </div>
       </div>

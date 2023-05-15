@@ -87,7 +87,7 @@ export class ApiTmdbPeliculasService {
 
   // Trailer de la película
   getPeliculasTrailer(movieId: number) {
-    return this.http.get(`${this.apiURL}/movie/${movieId}/videos?api_key=${this.apiKey}&language=es&page=1`)
+    return this.http.get(`${this.apiURL}/movie/${movieId}/videos?api_key=${this.apiKey}`)
       .pipe(
         catchError(err => {
           this.handleError('Error al obtener el trailer de la película', err);

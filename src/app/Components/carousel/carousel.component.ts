@@ -3,9 +3,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin } from 'rxjs';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
 import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-carousel',
@@ -18,8 +20,15 @@ export class CarouselComponent implements OnInit {
   faPlay = faPlay;
   faInfo = faInfo;
   currentPage = 1;
+  modalOpen = false;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService, public dialog: MatDialog, private router: Router) { }
+  constructor(
+    private peliculasService: ApiTmdbPeliculasService,
+    public dialog: MatDialog,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private viewportScroller: ViewportScroller
+  ) { }
 
   verDetalles(tipo: string, id: number) {
     this.router.navigate(['/detalle-busqueda', tipo, id]);
@@ -45,8 +54,34 @@ export class CarouselComponent implements OnInit {
     return genero ? genero.name : '';
   }
 
-  reproducirTrailer(pelicula: any) {
+  openTrailerModal(movieId: number): void {
+    this.modalOpen = true;
+    document.body.style.overflow = 'hidden';
+    const currentPosition = this.viewportScroller.getScrollPosition();
+    this.viewportScroller.scrollToPosition([0, 0]);
+    this.peliculasService.getPeliculasTrailer(movieId)
+      .subscribe((data: any) => {
+        const key = data.results[0].key;
+        const trailerUrl = this.getSafeYoutubeUrl(key);
+        const dialogConfig: MatDialogConfig = {
+          width: '75%',
+          height: '75%',
+          position: { top: '50%', left: '50%' },
+          panelClass: 'custom-modal',
+          data: { trailerUrl }
+        };
+        const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+          this.modalOpen = false;
+          document.body.style.overflow = 'auto';
+          this.viewportScroller.scrollToPosition(currentPosition);
+        });
+      });
+  }
 
+  private getSafeYoutubeUrl(key: string): SafeResourceUrl {
+    const url = `https://www.youtube.com/embed/${key}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   customOptions: OwlOptions = {

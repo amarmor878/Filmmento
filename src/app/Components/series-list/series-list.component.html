@@ -13,7 +13,7 @@
     <div *ngFor="let serie of series" class="movie-item">
       <img [src]="'https://image.tmdb.org/t/p/original/' + serie.poster_path" alt="{{ serie.name }}">
       <div class="movie-overlay">
-        <button class="trailer"><fa-icon [icon]="faPlay"></fa-icon></button>
+        <button class="trailer" (click)="openTrailerModal(serie.id)"><fa-icon [icon]="faPlay"></fa-icon></button>
         <button class="info" (click)="verDetalles('tv', serie.id)"><fa-icon [icon]="faInfo"></fa-icon></button>
         <div class="movie-details">
           <p class="movie-rating">{{ serie.vote_average }}</p>

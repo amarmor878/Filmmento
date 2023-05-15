@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ApiTmdbPeliculasService } from 'src/app/Services/api-tmdb-peliculas.service';
 import { faPlay, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 
 @Component({
   selector: 'app-movie-list',
@@ -15,8 +19,9 @@ export class MovieListComponent implements OnInit {
   faInfo = faInfo;
   selectedOption = 'ultima';
   page = 1;
+  modalOpen = false;
 
-  constructor(private peliculasService: ApiTmdbPeliculasService, private router: Router) { }
+  constructor(private peliculasService: ApiTmdbPeliculasService, private router: Router, private dialog: MatDialog, private sanitizer: DomSanitizer, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
     this.mostrarPeliculas();
@@ -24,6 +29,36 @@ export class MovieListComponent implements OnInit {
 
   verDetalles(tipo: string, id: number) {
     this.router.navigate(['/detalle-busqueda', tipo, id]);
+  }
+
+  openTrailerModal(movieId: number): void {
+    this.modalOpen = true;
+    document.body.style.overflow = 'hidden';
+    const currentPosition = this.viewportScroller.getScrollPosition();
+    this.viewportScroller.scrollToPosition([0, 0]);
+    this.peliculasService.getPeliculasTrailer(movieId)
+      .subscribe((data: any) => {
+        const key = data.results[0].key;
+        const trailerUrl = this.getSafeYoutubeUrl(key);
+        const dialogConfig: MatDialogConfig = {
+          width: '75%',
+          height: '75%',
+          position: { top: '50%', left: '50%' },
+          panelClass: 'custom-modal',
+          data: { trailerUrl }
+        };
+        const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+          this.modalOpen = false;
+          document.body.style.overflow = 'auto';
+          this.viewportScroller.scrollToPosition(currentPosition);
+        });
+      });
+  }
+
+  private getSafeYoutubeUrl(key: string): SafeResourceUrl {
+    const url = `https://www.youtube.com/embed/${key}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   mostrarPeliculas(): void {

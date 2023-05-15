@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { ActivatedRoute } from '@angular/router';
 import { ApiTmdbBusquedaService } from 'src/app/Services/api-tmdb-busqueda.service';
-import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { faHeart, faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -76,10 +76,10 @@ export class DetalleBusquedaComponent implements OnInit {
     const minutos = this.detalle.runtime;
     const horas = Math.floor(minutos / 60);
     const minutosRestantes = minutos % 60;
-  
+
     return `${horas}h ${minutosRestantes}min`;
   }
-  
+
   private getLogo(tipo: string, id: string): void {
     this.apiTmdbBusquedaService
       .getImagenes(tipo, id)
@@ -132,6 +132,5 @@ export class DetalleBusquedaComponent implements OnInit {
     const url = `https://www.youtube.com/embed/${key}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
 
 }

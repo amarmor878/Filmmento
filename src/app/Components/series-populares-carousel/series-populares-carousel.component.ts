@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiTmdbSeriesService } from 'src/app/Services/api-tmdb-series.service';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { ViewportScroller } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.component';
 
 @Component({
   selector: 'app-series-populares-carousel',
@@ -13,14 +17,16 @@ export class SeriesPopularesCarouselComponent implements OnInit {
   generos: any[] = [];
   faPlay = faPlay;
   currentPage = 1;
+  modalOpen = false;
 
-  constructor(private seriesService: ApiTmdbSeriesService) { }
+  constructor(private seriesServices: ApiTmdbSeriesService, private dialog: MatDialog, private sanitizer: DomSanitizer, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
-    this.seriesService.getSeriesPopulares(this.currentPage).subscribe(seriesData => {
+    this.seriesServices.getSeriesPopulares(this.currentPage).subscribe(seriesData => {
       this.series = seriesData.results;
     });
-    this.seriesService.getGenerosSerie().subscribe(generosData => {
+
+    this.seriesServices.getGenerosSerie().subscribe(generosData => {
       this.generos = generosData.genres;
     });
   }
@@ -30,6 +36,36 @@ export class SeriesPopularesCarouselComponent implements OnInit {
     return genero ? genero.name : '';
   }
 
+  openTrailerModal(movieId: number): void {
+    this.modalOpen = true;
+    document.body.style.overflow = 'hidden';
+    const currentPosition = this.viewportScroller.getScrollPosition();
+    this.viewportScroller.scrollToPosition([0, 0]);
+    this.seriesServices.getSerieTrailer(movieId)
+      .subscribe((data: any) => {
+        const key = data.results[0].key;
+        const trailerUrl = this.getSafeYoutubeUrl(key);
+        const dialogConfig: MatDialogConfig = {
+          width: '75%',
+          height: '75%',
+          position: { top: '50%', left: '50%' },
+          panelClass: 'custom-modal',
+          data: { trailerUrl }
+        };
+        const dialogRef = this.dialog.open(DialogTrailerComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+          this.modalOpen = false;
+          document.body.style.overflow = 'auto';
+          this.viewportScroller.scrollToPosition(currentPosition);
+        });
+      });
+  }
+
+  private getSafeYoutubeUrl(key: string): SafeResourceUrl {
+    const url = `https://www.youtube.com/embed/${key}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -37,8 +73,8 @@ export class SeriesPopularesCarouselComponent implements OnInit {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    autoplay: true, // Agregado para que el carousel siempre esté en movimiento
-    autoplayHoverPause: true, // Agregado para detener el movimiento al pasar el mouse sobre él
+    autoplay: true,
+    autoplayHoverPause: true,
     navText: ['', ''],
     responsive: {
       0: {

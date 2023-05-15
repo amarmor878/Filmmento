@@ -8,9 +8,7 @@
           <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + pelicula.poster_path"
             alt="{{ pelicula.title }}">
           <div class="movie-overlay">
-            <button class="trailer">
-              <fa-icon [icon]="faPlay"></fa-icon>
-            </button>
+            <button class="trailer" (click)="openTrailerModal(pelicula.id)"><fa-icon [icon]="faPlay"></fa-icon></button>
             <div class="movie-details">
               <p class="movie-rating">{{ pelicula.vote_average }}</p>
               <p class="movie-year">{{ pelicula.release_date | date:'yyyy' }}</p>

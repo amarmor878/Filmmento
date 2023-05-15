@@ -8,14 +8,11 @@
           <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + serie.poster_path"
             alt="{{ serie.name }}">
           <div class="movie-overlay">
-            <button class="trailer">
-              <fa-icon [icon]="faPlay"></fa-icon>
-            </button>
+            <button class="trailer" (click)="openTrailerModal(serie.id)"><fa-icon [icon]="faPlay"></fa-icon></button>
             <div class="movie-details">
               <p class="movie-rating">{{ serie.vote_average }}</p>
               <p class="movie-year">{{ serie.first_air_date | date:'yyyy' }}</p>
               <p class="movie-title">{{ serie.name | slice:0:21 }}{{ serie.name.length > 21 ? '...' : '' }}</p>
-              <p class="movie-genres">{{ getGeneroById(serie.genre_ids[0]) }}</p>
             </div>
           </div>
         </div>
