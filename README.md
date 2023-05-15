@@ -46,18 +46,23 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Instalación de bootstrap para mejor distribución en los detalles de las búsquedas~~
  - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
 
+## Semana 4 (Orientativo) - 15/05/2023 - 21/05/2023
+ - [X] ~~Creación servicio para mostrar busquedas similares~~
+ - [X] ~~Modificación y refactorización del componente de busqueda~~
+ - [X] ~~Estructura y selector para "detalles" en detalles busqueda component~~
+
  
 ## PENDIENTE:
 - [X] ~~Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).~~
 - [X] ~~Corrección del color de las búsquedas (el texto de las películas se ve en blanco, el de las series en negro y no se ve).~~
-- [ ] Implementación de la función que al pulsar en una pelicula de cualquier carousel, filtrar la búsqueda y redirigirla.
+- [X] ~~Implementación de la función que al pulsar en una pelicula de cualquier carousel, filtrar la búsqueda y redirigirla.~~
 - [ ] Corregir la ventana modal para ver el trailer en la pagina home al pulsar el botón "Ver trailer" DESHABILITADO POR EL MOMENTO.
-- [ ] Consultar API y, tras realizar una petición, mostrar los datos de la película o serie (en desarrollo).
+- [X] ~~Consultar API y, tras realizar una petición, mostrar los datos de la película o serie (en desarrollo).~~
 - [ ] Plantear la base de datos para que un usuario registrado, al seleccionar una pelicula como favorita, pueda ver sus peliculas favoritas en su perfil (Con Spring).
 - [ ] ...
 
 ## Posibles mejoras:
-- [ ] ¿Al buscar una pelicula o serie, mostrar tambien la información de los actores?.
+- [X] ~~¿Al buscar una pelicula o serie, mostrar tambien la información de los actores?.~~
 - [ ] ¿Crear un apartado para personas que participen en las series o peliculas y mostrar su información?.
 - [ ] ¿Firebase podrá almacenar peliculas favoritas y vistas? Plantear posibilidad.
 - [ ] ...
