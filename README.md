@@ -47,16 +47,20 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
 
 ## Semana 4 (Orientativo) - 15/05/2023 - 21/05/2023
+### Lunes 15 (FESTIVO)
  - [X] ~~Creación servicio para mostrar busquedas similares~~
  - [X] ~~Modificación y refactorización del componente de busqueda~~
  - [X] ~~Estructura y selector para "detalles" en detalles busqueda component~~
+ - [X] ~~Incorporación de venta modal para ver trailer~~
+ - [X] ~~Funcionalidad para ver trailer de la busqueda~~
+ - [X] ~~Todos los botones de "Ver trailer" a todos los botones.~~
 
  
 ## PENDIENTE:
 - [X] ~~Corrección de la búsqueda de películas (se ve debajo del todo, no debajo del input de búqueda).~~
 - [X] ~~Corrección del color de las búsquedas (el texto de las películas se ve en blanco, el de las series en negro y no se ve).~~
 - [X] ~~Implementación de la función que al pulsar en una pelicula de cualquier carousel, filtrar la búsqueda y redirigirla.~~
-- [ ] Corregir la ventana modal para ver el trailer en la pagina home al pulsar el botón "Ver trailer" DESHABILITADO POR EL MOMENTO.
+- [X] ~~Corregir la ventana modal para ver el trailer en la pagina home al pulsar el botón "Ver trailer" DESHABILITADO POR EL MOMENTO.~~
 - [X] ~~Consultar API y, tras realizar una petición, mostrar los datos de la película o serie (en desarrollo).~~
 - [ ] Plantear la base de datos para que un usuario registrado, al seleccionar una pelicula como favorita, pueda ver sus peliculas favoritas en su perfil (Con Spring).
 - [ ] ...
@@ -80,11 +84,9 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 
 ### Lista de películas
 1.  Los usuarios deben poder buscar películas por título y ver los resultados de búsqueda.
-2.  Los usuarios deben poder ver los detalles de una película, incluyendo su título, año de lanzamiento, sinopsis, género, duración, elenco y calificación promedio.
-3.  Los usuarios deben poder agregar películas a su lista de películas favoritas.
-4.  Los usuarios deben poder agregar películas a su lista de películas vistas.
-5.  Los usuarios deben poder eliminar películas de su lista de películas favoritas.
-6.  Los usuarios deben poder eliminar películas de su lista de películas vistas.
+2.  Los usuarios deben poder ver los detalles de una películao serie, incluyendo su título, año de lanzamiento, sinopsis, género, duración...
+3.  Los usuarios deben poder agregar películas o series a su lista de favoritas.
+5.  Los usuarios deben poder eliminar películas o series de su lista de favoritas.
 
 ## Tecnologías
 
@@ -135,5 +137,5 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 -   Documentación oficial de Git: [Git - Documentation (git-scm.com)](https://git-scm.com/doc)
 -   Documentación oficial de GitHub: [GitHub Documentation](https://docs.github.com/en)
 -   Documentación oficial de Markdown: [Getting Started | Markdown Guide](https://www.markdownguide.org/getting-started/)
-- Iconos: [DEVICON | All programming languages and development tools related icons font](https://devicon.dev/)
+-   Iconos: [DEVICON | All programming languages and development tools related icons font](https://devicon.dev/)
 
