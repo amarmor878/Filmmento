@@ -6,7 +6,7 @@ import { DialogTrailerComponent } from '../dialog-trailer/dialog-trailer.compone
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { faHeart, faPlay } from '@fortawesome/free-solid-svg-icons';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, switchMap, tap } from 'rxjs/operators';
 import { ViewportScroller } from '@angular/common';
 
 @Component({
@@ -21,6 +21,7 @@ export class DetalleBusquedaComponent implements OnInit {
   // Almacenar datos
   detalle: any;
   generos: any[] = [];
+  reparto: any[] = [];
   // Mostrar datos
   tipo: string = '';
   esPelicula: boolean = false;
@@ -28,6 +29,7 @@ export class DetalleBusquedaComponent implements OnInit {
   trailerUrl: SafeResourceUrl = '';
   logoUrl: string = '';
   modalOpen = false;
+  selectedTab: string = 'similares';
 
   constructor(
     private route: ActivatedRoute,
@@ -45,16 +47,22 @@ export class DetalleBusquedaComponent implements OnInit {
     });
   }
 
-  private getBusquedaGlobalPorTipo(tipo: string, id: string): void {
+  getBusquedaGlobalPorTipo(tipo: string, id: string): void {
     this.apiTmdbBusquedaService
       .getBusquedaGlobalPorTipo(tipo, id)
       .pipe(
-        tap((data: any) => {
+        tap((data) => {
           this.detalle = data;
-          this.generos = this.detalle.genres;
-          this.esPelicula = this.tipo === 'movie';
-          this.esSerie = this.tipo === 'tv';
+          this.generos = data.genres;
+          this.logoUrl = data.logo_path;
+          this.esPelicula = tipo === 'movie';
+          this.esSerie = tipo === 'tv';
+          this.trailerUrl = this.getSafeYoutubeUrl(data.trailer_key);
           this.getLogo(tipo, id);
+        }),
+        switchMap((data) => this.apiTmdbBusquedaService.getBusquedaCreditos(tipo, id)),
+        tap((creditos) => {
+          this.reparto = creditos.cast.slice(0, 6);
         }),
         catchError((error) => {
           console.error(error);
@@ -64,6 +72,14 @@ export class DetalleBusquedaComponent implements OnInit {
       .subscribe();
   }
 
+  getDuracionFormateada(): string {
+    const minutos = this.detalle.runtime;
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+  
+    return `${horas}h ${minutosRestantes}min`;
+  }
+  
   private getLogo(tipo: string, id: string): void {
     this.apiTmdbBusquedaService
       .getImagenes(tipo, id)
@@ -116,4 +132,6 @@ export class DetalleBusquedaComponent implements OnInit {
     const url = `https://www.youtube.com/embed/${key}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+
+
 }

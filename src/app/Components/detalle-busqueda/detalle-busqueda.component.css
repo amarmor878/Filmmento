@@ -25,3 +25,22 @@
 .scroll-locked {
   overflow: hidden;
 }
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.smaller-image {
+  width: 100px;
+  height: auto;
+}
+
+.actor-photo {
+  display: inline-block;
+  width: 50px; /* Ajusta el tamaño según tus preferencias */
+  height: auto; /* Ajusta el tamaño según tus preferencias */
+  margin-left: 10px; /* Ajusta el espacio entre el nombre del actor y la foto según tus preferencias */
+  vertical-align: middle;
+  margin: 0.5rem;
+}

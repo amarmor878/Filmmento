@@ -31,7 +31,7 @@ export class ApiTmdbBusquedaService {
   }
 
   getBusquedaGlobalPorTipo(tipo: string, id: string): Observable<any> {
-    return this.http.get(`${this.apiURL}/${tipo}/${id}?api_key=${this.apiKey}&language=es`)
+    return this.http.get(`${this.apiURL}/${tipo}/${id}?api_key=${this.apiKey}&language=es-ES`)
       .pipe(
         catchError(err => {
           this.handleError('Error al obtener los resultados de la busqueda', err);
