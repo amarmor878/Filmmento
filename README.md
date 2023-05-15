@@ -16,44 +16,46 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 
 ## Semana 1 (Orientativo) - 24/04/2023 - 30/04/2023
 ### Sabado 28:
- - [X] ~~Migración del proyecto de React a Angular 15.2.6~~
- - [X] ~~Instalación de dependencias (angular material, carousel, etc...)~~
- - [X] ~~Creación de componentes principales (home, movie-list, series-list)~~
- - [X] ~~Busqueda de componente carousel para realizar carouseles (owl-carousel)~~
+ - [X] ~~Migración del proyecto de React a Angular 15.2.6.~~
+ - [X] ~~Instalación de dependencias (angular material, carousel, etc...).~~
+ - [X] ~~Creación de componentes principales (home, movie-list, series-list).~~
+ - [X] ~~Busqueda de componente carousel para realizar carouseles (owl-carousel).~~
 ### Domingo 29:
- - [X] ~~Creación de componentes carousel de películas y de series (top y más populares)~~
- - [X] ~~División de servicios, en vez de uno global, dos específicos (para peliculas y para series)~~
+ - [X] ~~Creación de componentes carousel de películas y de series (top y más populares).~~
+ - [X] ~~División de servicios, en vez de uno global, dos específicos (para peliculas y para series).~~
  - [X] ~~Mostrar la información de las películas en la aplicación a través de los carousel.~~
 
 ## Semana 2 (Orientativo) - 01/05/2023 - 07/05/2023
 ### Sabado 06
- - [X] ~~Crear header para administrar las rutas (peliculas, series y home)~~
- - [X] ~~Implementación de otro servicio: Busqueda por tipo~~
- - [X] ~~Creación del apartado Películas con filtrado de "populares o mejor valoradas" con un Angular Material~~
+ - [X] ~~Crear header para administrar las rutas (peliculas, series y home).~~
+ - [X] ~~Implementación de otro servicio: Busqueda por tipo.~~
+ - [X] ~~Creación del apartado Películas con filtrado de "populares o mejor valoradas" con un Angular Material.~~
  ### Domingo 07
- - [X] ~~Creación del apartado series con filtrado de "populares o mejor valoradas" con un Angular Material~~
+ - [X] ~~Creación del apartado series con filtrado de "populares o mejor valoradas" con un Angular Material.~~
  - [X] ~~Revisión de rutas.~~
  - [X] ~~Implementación de la barra de búsqueda.~~
 
 ## Semana 3 (Orientativo) - 08/05/2023 - 14/05/2023
 ### Sabado 13
- - [X] ~~Modificación de barra de búsqueda en header (se ve debajo los resultados)~~
- - [X] ~~Replanteamiento de buscar películas o series~~
+ - [X] ~~Modificación de barra de búsqueda en header (se ve debajo los resultados).~~
+ - [X] ~~Replanteamiento de buscar películas o series.~~
  - [X] ~~Creación de nueva ruta y servicio para busqueda de películas en página independiente~~
  - [X] ~~Implementación de vista y componente de Búsqueda de películas.~~
 ### Domingo 14
- - [X] ~~Boton de consultar informaicón de las películas y series en carouseles y busqueda~~
- - [X] ~~Instalación de bootstrap para mejor distribución en los detalles de las búsquedas~~
- - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
+ - [X] ~~Boton de consultar informaicón de las películas y series en carouseles y busqueda.~~
+ - [X] ~~Instalación de bootstrap para mejor distribución en los detalles de las búsquedas.~~
+ - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap.~~
 
 ## Semana 4 (Orientativo) - 15/05/2023 - 21/05/2023
 ### Lunes 15 (FESTIVO)
- - [X] ~~Creación servicio para mostrar busquedas similares~~
- - [X] ~~Modificación y refactorización del componente de busqueda~~
- - [X] ~~Estructura y selector para "detalles" en detalles busqueda component~~
- - [X] ~~Incorporación de venta modal para ver trailer~~
- - [X] ~~Funcionalidad para ver trailer de la busqueda~~
+ - [X] ~~Creación servicio para mostrar busquedas similares.~~
+ - [X] ~~Modificación y refactorización del componente de busqueda.~~
+ - [X] ~~Estructura y selector para "detalles" en detalles busqueda component.~~
+ - [X] ~~Incorporación de venta modal para ver trailer.~~
+ - [X] ~~Funcionalidad para ver trailer de la busqueda.~~
  - [X] ~~Todos los botones de "Ver trailer" a todos los botones.~~
+ - [X] ~~Nuevo carousel para ver las peliculas similares.~~
+ - [X] ~~Implementación y estética del carousel de las busquedas similares.~~
 
  
 ## PENDIENTE:
@@ -74,8 +76,8 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 ## Requisitos funcionales
 
 ### Autenticación de usuario
-1.  Los usuarios deben poder registrarse en la aplicación con su correo electrónico y contraseña, o utilizar una cuenta de Google o Facebook.
-2.  Los usuarios deben poder iniciar sesión en la aplicación con su correo electrónico y contraseña, o utilizando una cuenta de Google o Facebook.
+1.  Los usuarios deben poder registrarse en la aplicación con su correo electrónico y contraseña, o utilizar una cuenta de Google.
+2.  Los usuarios deben poder iniciar sesión en la aplicación con su correo electrónico y contraseña, o utilizando una cuenta de Google.
 3.  Los usuarios deben poder cerrar sesión en la aplicación.
 
 ### Perfil de usuario
@@ -84,7 +86,7 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 
 ### Lista de películas
 1.  Los usuarios deben poder buscar películas por título y ver los resultados de búsqueda.
-2.  Los usuarios deben poder ver los detalles de una películao serie, incluyendo su título, año de lanzamiento, sinopsis, género, duración...
+2.  Los usuarios deben poder ver los detalles de una película o serie, incluyendo su título, año de lanzamiento, sinopsis, género, duración...
 3.  Los usuarios deben poder agregar películas o series a su lista de favoritas.
 5.  Los usuarios deben poder eliminar películas o series de su lista de favoritas.
 
