@@ -47,6 +47,7 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
  - [X] ~~Reparación de los carousel-owl por conflicto con bootstrap~~
 
 ## Semana 4 (Orientativo) - 15/05/2023 - 21/05/2023
+### Lunes 15 (FESTIVO)
  - [X] ~~Creación servicio para mostrar busquedas similares~~
  - [X] ~~Modificación y refactorización del componente de busqueda~~
  - [X] ~~Estructura y selector para "detalles" en detalles busqueda component~~
