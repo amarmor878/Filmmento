@@ -1,0 +1,38 @@
+.carousel-wrapper {
+  margin: 1rem 1rem -1rem 1rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.carousel-item-owl:hover .overlay {
+  opacity: 1;
+}
+
+.title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+

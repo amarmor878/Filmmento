@@ -8,26 +8,35 @@
       </div>
       <div class="info">
         <div class="mt-3">
-          <button class="btn btn-outline-light" (click)="openTrailerModal()">
-            <fa-icon [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer
-          </button>
-          <button class="btn btn-outline-light rounded-circle" style="margin-left: 1rem;">
-            <fa-icon [icon]="faHeart"></fa-icon>
-          </button>
+          <button class="btn btn-outline-light" (click)="openTrailerModal()"><fa-icon
+              [icon]="faPlay"></fa-icon>&nbsp;&nbsp;Ver Trailer</button>
+          <button class="btn btn-outline-light rounded-circle" style="margin-left: 1rem;"><fa-icon
+              [icon]="faHeart"></fa-icon></button>
         </div>
         <p class="mt-3">{{ detalle.overview }}</p>
       </div>
     </div>
   </div>
 
+  <!--Selector-->
   <div class="row">
     <mat-divider></mat-divider>
-    <mat-chip-listbox [(ngModel)]="selectedTab" aria-label="Selector categoria">
-      <mat-chip-option class="movie-button" value="similares" selected>Similares</mat-chip-option>
+    <mat-chip-listbox [(ngModel)]="selectedTab" aria-label="Selector categoria"
+      (selectionChange)="reloadCarousel = false"> <mat-chip-option class="movie-button" value="similares"
+        selected>Similares</mat-chip-option>
       <mat-chip-option class="movie-button" value="detalles">Detalles</mat-chip-option>
     </mat-chip-listbox>
   </div>
 
+  <!--Similares-->
+  <div class="row" *ngIf="selectedTab === 'similares' && peliculasSimilares.length > 0"><ng-container
+      *ngIf="reloadCarousel">
+      <app-carousel-similares-busqueda [peliculas]="peliculasSimilares" [detalles]="detalle"
+        [tipoEntrada]="tipo"></app-carousel-similares-busqueda>
+    </ng-container>
+  </div>
+
+  <!--Detalles-->
   <div class="row" *ngIf="selectedTab === 'detalles'">
     <div class="col-lg-6">
       <h3 *ngIf="esPelicula">{{ detalle.title }}</h3>
@@ -69,7 +78,6 @@
         </div>
       </div>
     </div>
-  </div>  
-
+  </div>
 
 </div>

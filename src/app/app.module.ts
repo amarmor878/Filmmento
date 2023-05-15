@@ -41,6 +41,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { CarouselSimilaresBusquedaComponent } from './Components/carousel-similares-busqueda/carousel-similares-busqueda.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
     CarouselSeriesComponent,
     DetalleBusquedaComponent,
     SearchDialogComponent,
+    CarouselSimilaresBusquedaComponent,
   ],
   imports: [
     BrowserModule,

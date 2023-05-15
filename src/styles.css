@@ -1,7 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
-  background-color: black;
+  background-color: #1a1d29;
   color: white;
   font-family: "Roboto", sans-serif;
 }
@@ -27,12 +27,6 @@ app-carousel {
   position: relative;
   z-index: 1;
 }
-
-/*
-.modal-open {
-  overflow: hidden;
-}
-*/
 
 .custom-autocomplete-panel {
   width: 100% !important;

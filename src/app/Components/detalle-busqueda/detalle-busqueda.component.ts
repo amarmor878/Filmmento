@@ -18,6 +18,7 @@ export class DetalleBusquedaComponent implements OnInit {
   detalle: any;
   generos: any[] = [];
   reparto: any[] = [];
+  peliculasSimilares: any[] = [];
   tipo = '';
   esPelicula = false;
   esSerie = false;
@@ -25,6 +26,7 @@ export class DetalleBusquedaComponent implements OnInit {
   logoUrl = '';
   modalOpen = false;
   selectedTab = 'similares';
+  reloadCarousel = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +56,12 @@ export class DetalleBusquedaComponent implements OnInit {
     this.apiTmdbBusquedaService.getBusquedaCreditos(tipo, id).subscribe(({ cast }) => {
       this.reparto = cast.slice(0, 6);
     });
+    this.apiTmdbBusquedaService.getBusquedaSimilares(tipo, id).subscribe((data) => {
+      this.peliculasSimilares = data.results.filter((pelicula: any) => pelicula.backdrop_path !== null);
+      this.reloadCarousel = true;
+      console.log(this.peliculasSimilares);
+    });
+
   }
 
   getDuracionFormateada(): string {
@@ -103,4 +111,6 @@ export class DetalleBusquedaComponent implements OnInit {
     const url = `https://www.youtube.com/embed/${key}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+
+
 }

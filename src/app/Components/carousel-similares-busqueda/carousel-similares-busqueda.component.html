@@ -1,0 +1,15 @@
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let pelicula of peliculasConDetalles">
+    <div class="carousel-wrapper owl-theme">
+      <div class="img-wrapper">
+        <img class="owl-lazy" [src]="'https://image.tmdb.org/t/p/original/' + pelicula.backdrop_path"
+          alt="{{ pelicula.title }}" (click)="verDetalles(pelicula.tipo, pelicula.id)">
+      </div>
+      <div class="carousel-item-overlay-owl">
+        <h3 class="title">
+          {{ tipoEntrada === 'movie' ? pelicula.title : tipoEntrada === 'tv' ? pelicula.name : '' }}
+        </h3>
+      </div>
+    </div>
+  </ng-template>
+</owl-carousel-o>
