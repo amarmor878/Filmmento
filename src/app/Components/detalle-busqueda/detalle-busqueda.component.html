@@ -30,7 +30,8 @@
 
   <div class="row" *ngIf="selectedTab === 'detalles'">
     <div class="col-lg-6">
-      <h3>{{ detalle.title }}</h3>
+      <h3 *ngIf="esPelicula">{{ detalle.title }}</h3>
+      <h3 *ngIf="esSerie">{{ detalle.name }}</h3>
       <p>{{ detalle.overview }}</p>
     </div>
     <div class="col-lg-6">
