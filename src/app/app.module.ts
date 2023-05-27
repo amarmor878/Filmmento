@@ -42,6 +42,9 @@ import { FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { CarouselSimilaresBusquedaComponent } from './Components/carousel-similares-busqueda/carousel-similares-busqueda.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import { CarouselSimilaresBusquedaComponent } from './Components/carousel-simila
     DetalleBusquedaComponent,
     SearchDialogComponent,
     CarouselSimilaresBusquedaComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

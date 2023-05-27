@@ -1,0 +1,32 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent" class="row justify-content-center">
+
+    <div class="fadeIn first row justify-content-center my-3">
+      <img src="../../../assets/logos-filmmento_1024_Mesa de trabajo 1.png" id="icon" alt="User Icon"
+        style="width: 50%; border-radius: 3px;" class="" />
+    </div>
+
+    <form class="row justify-content-center" (ngSubmit)="login()">
+      <input type="text" [(ngModel)]="this.user" id="user" class="fadeIn second" name="user" placeholder="Usuario"
+        style="width: 92%;" autofocus required>
+      <div class="justify-content-center divPassword">
+        <input [type]="inputTipoTexto ? 'text' : 'password'" [(ngModel)]="this.password" id="password"
+          class="fadeIn third span2" name="password" placeholder="Contraseña" style="width: 100%;" required>
+        <button style="height: 68px;" (click)="cambioTipoInput()" class="editarPerfil" tabindex="-1" type="button">
+          <fa-icon id="passIcon" style="color: #8b008b; font-size: 130%;"
+            [icon]="inputTipoTexto ? faEyeSlash : faEye"></fa-icon>
+        </button>
+      </div>
+      <input type="submit" style="width: 60%;" class="fadeIn second botonLogin" value="Login">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter" style="width: 100%;">
+      <a class="underlineHover" [routerLink]="['../register']">¿No estás registrado?</a>
+      <br>
+      <a class="underlineHover" (click)="enviarEmail()" style="cursor: pointer; margin-top:3%;">Olvidé mi
+        contraseña</a>
+    </div>
+
+  </div>
+</div>
