@@ -75,7 +75,7 @@ export class DetalleBusquedaComponent implements OnInit {
     this.apiTmdbBusquedaService.getImagenes(tipo, id).subscribe(({ logos }) => {
       const logo = logos[logos.length - 1].file_path;
       this.logoUrl = `https://image.tmdb.org/t/p/w500${logo}`;
-    });
+    }); 
   }
 
   getBackdropPath(): string {
