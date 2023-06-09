@@ -104,7 +104,7 @@ Así que, si eres un amante del cine y buscas una aplicación potente y llena de
 
 ---
 
-### Backend
+### Backend (PENDIENTE DE IMPLEMENTAR)
 <a href="#">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" height="30px"/></a>
 <a href="#">
